@@ -401,7 +401,7 @@ const EndlessGameScreen = () => {
         <Text style={styles.displayedAlphabets}>{displayedAlphabets.toLocaleUpperCase()}</Text> 
       </View>
       <View style={styles.buttonRow}>
-      <Text style={styles.displayedAlphabets}>{selectedLetters.join('')}</Text>
+      <Text  style={styles.displayedAlphabets}>{selectedLetters.join('')}</Text>
       </View>
       <View style={styles.buttonRow}>
           {buttons.slice(0, 5).map((button) => (
@@ -479,13 +479,15 @@ const HighScoreScreen = () => {
       );
     });
   }, []);
+  
   return (
     <View style={styles.highscorecontainer}>
       <Text style={styles.highScoresText}>High scores</Text>
       <Text style={styles.highScoresText}>Trails:</Text>
       {loading ? (
-        <Text>Loading your Highscores</Text>
-      ) : trailsHighScores.length === 0 ? (
+      <Text>Loading your Highscores</Text>
+      ) : 
+      trailsHighScores.length === 0 ? (
         <Text>No high scores for Trails at the moment.</Text>
       ) : (
         trailsHighScores.map((score, index) => (
@@ -554,10 +556,10 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="MainPage" component={MainPage} options={{ title: "Wordie", headerTitleAlign: "center" }}/>
-        <Stack.Screen name="GameScreen" component={GameScreen} options={{ title: "Wordie", headerTitleAlign: "center" }} />
-        <Stack.Screen name="EndlessGameScreen" component={EndlessGameScreen} options={{ title: "Wordie", headerTitleAlign: "center" }} />
-        <Stack.Screen name="HighScoreScreen" component={HighScoreScreen} options={{ title: "Wordie", headerTitleAlign: "center" }} />
-        <Stack.Screen name="WordOfTheDayScreen" component={WordOfTheDayScreen} options={{ title: "Wordie", headerTitleAlign: "center" }} />
+        <Stack.Screen name="GameScreen" component={GameScreen} options={{ title: "Trails", headerTitleAlign: "center" }} />
+        <Stack.Screen name="EndlessGameScreen" component={EndlessGameScreen} options={{ title: "Endless Trails", headerTitleAlign: "center" }} />
+        <Stack.Screen name="HighScoreScreen" component={HighScoreScreen} options={{ title: "High score", headerTitleAlign: "center" }} />
+        <Stack.Screen name="WordOfTheDayScreen" component={WordOfTheDayScreen} options={{ title: "Word for the day", headerTitleAlign: "center" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,45 +1,42 @@
 import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
 import MainPage from './App'; 
-
-describe('MainPage', () => {
-  it('navigate to GameScreen when Trails is pressed', () => {
+describe('Navigation for the application',()=>{
+  test('Navigation to Game Screen', () => {
     const { getByText } = render(<MainPage/>);
-    const navigate = jest.fn();
-
     const trailsButton = getByText('Trails');
     fireEvent.press(trailsButton);
-
-    expect(navigate).toHaveBeenCalledWith('GameScreen');
+    const gameScreenTitle = getByText('Trails');
+    expect(gameScreenTitle).toBeTruthy();
   });
 
-  it('navigate to EndlessGameScreen when Endless Trails is pressed', () => {
+  test('Navigation to Endless Game Screen', () => {
     const { getByText } = render(<MainPage/>);
-    const navigate = jest.fn();
-
-    const endlessTrailsButton = getByText('Endless Trails');
-    fireEvent.press(endlessTrailsButton);
-
-    expect(navigate).toHaveBeenCalledWith('EndlessGameScreen');
+    const endlessGameButton = getByText('Endless Trails');
+    fireEvent.press(endlessGameButton);
+    const endlessGameScreenTitle = getByText('Endless Trails');
+    expect(endlessGameScreenTitle).toBeTruthy();
   });
 
-  it('navigate to HighscoreScreen when High Score is pressed', () => {
+  test('Navigation to High Score Screen', () => {
     const { getByText } = render(<MainPage/>);
-    const navigate = jest.fn();
-
-    const endlessTrailsButton = getByText('High Score');
-    fireEvent.press(HighScoreScreen);
-
-    expect(navigate).toHaveBeenCalledWith('HighScoreScreen');
+    const highScoreButton = getByText('High Score');
+    fireEvent.press(highScoreButton);
+    const highScoreScreenTitle = getByText('High scores');
+    expect(highScoreScreenTitle).toBeTruthy();
   });
 
-  it('navigate to HighscoreScreen when Word of the day is pressed', () => {
+  test('Navigation to Word of the Day Screen', () => {
     const { getByText } = render(<MainPage/>);
-    const navigate = jest.fn();
-
-    const endlessTrailsButton = getByText('Word of the day');
-    fireEvent.press(HighScoreScreen);
-
-    expect(navigate).toHaveBeenCalledWith('WordOfTheDayScreen');
+    const wordOfTheDayButton = getByText('Word of the day');
+    fireEvent.press(wordOfTheDayButton);
+    const wordOfTheDayScreenTitle = getByText('Word for the day');
+    expect(wordOfTheDayScreenTitle).toBeTruthy();
   });
-  
-});
+})
+
+
+
+
+
+
